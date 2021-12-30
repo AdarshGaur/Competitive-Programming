@@ -1,5 +1,9 @@
 #ignore the extra folder
 extra/
+./practice-problems
+
+#Python Scripts
+*.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
