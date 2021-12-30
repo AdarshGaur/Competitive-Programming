@@ -3,13 +3,11 @@
 import os, shutil
 
 problem_name = input("Problem Name - ") + ".cpp"
-#problem_name = name.replace(" ", "_") + ".cpp"
 
 par_dir = os.getcwd();
 src = par_dir + "/template.cpp"
-par_dir += "/practice-problems"
-problem_dir = os.path.join(par_dir, problem_name)
-dest = problem_dir
+par_dir += "/Random Problems"
+dest = os.path.join(par_dir, problem_name)
 
 try:
 	copied_path = shutil.copy(src, dest);

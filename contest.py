@@ -3,7 +3,6 @@
 import os, shutil
 
 contest_name = input("Contest Name - ") + "/"
-#contest_name = name.replace(" ", "-") + "/"
 
 par_dir = os.getcwd();
 contest_dir = os.path.join(par_dir, contest_name)
@@ -15,8 +14,7 @@ except OSError as e:
 	print(e);
 	exit()
 
-# template = par_dir + "template.cpp"
-files = ('a', 'b', 'c', 'd', 'e', 'f',)
+files = ('a', 'b', 'c', 'd', 'e', 'f', 'g',)
 src = par_dir+"/template.cpp"
 
 for i in files:
