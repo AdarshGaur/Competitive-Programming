@@ -1,6 +1,6 @@
 #ignore the extra folder
 extra/
-practice-problems/
+temp/
 
 #Python Scripts
 contest.py
