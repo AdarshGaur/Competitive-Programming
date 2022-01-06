@@ -21,27 +21,24 @@ int const mod = 1e9 +7;
 
 void solve(){
 	int n;cin>>n;
-	int a[n];
 	set<int> s;
 	for(int i=0; i<n; i++){
-		cin>>a[i];
-		if(a[i]%2==0){
-			s.insert(a[i]);
+		int x;cin>>x;
+		if(x%2==0){
+			s.insert(x);
 		}
 	}
-	int cnt=0;
+	int ans=0;
 	while(!s.empty()){
-		cnt++;
-		auto it = s.end();
-		it--;
-		int x = *it;
-		s.erase(it);
+		ans++;
+		int x = *s.rbegin();
+		s.erase(x);
 		x/=2;
 		if(x%2==0){
 			s.insert(x);
 		}
 	}
-	cout<<cnt<<endl;
+	cout<<ans<<endl;
 }
 
 int32_t main()

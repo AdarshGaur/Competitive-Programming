@@ -21,16 +21,11 @@ int const N = 1e9 + 7;
 vector<pii> b;
 
 void init(){
-	int cnt=0;
-	for(int i=1; i<10; i++){
-		for(char j=1; j<10; j++){
-			cnt++;
-			int n=j;
-			for(int k=2; k<=i; k++){
-				n *= 10;
-				n += j;
-			}
-			b.push_back({n,cnt});
+	int cnt=1, x=0;
+	for(int i=0; i<10; i++){
+		x = x*10 +1;
+		for(int j=1; j<10; j++){
+			b.push_back({x*j,cnt++});
 		}
 	}
 }

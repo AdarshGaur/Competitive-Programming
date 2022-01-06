@@ -20,7 +20,22 @@ int const mod = 1e9 +7;
 
 
 void solve(){
-	
+	string s;cin>>s;
+	vi ans;
+	for(string k : {"twone", "one", "two"}){
+		size_t pos = s.find(k, ii(0));
+		while(pos != string::npos){
+			int ind = pos + (k.size())/2;
+			s[ind]='x';
+			ans.push_back(ind);
+			pos = s.find(k,pos);
+		}
+	}
+	cout<<ans.size()<<endl;
+	for(auto i:ans){
+		cout<<i+1<<" ";
+	}
+	cout<<endl;
 }
 
 int32_t main()
