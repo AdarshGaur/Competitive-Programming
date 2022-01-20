@@ -11,12 +11,17 @@ typedef vector<int> vi;
 #define endl "\n"
 #define aster(x) cerr<<#x<<" = "<<x<<endl;
 #define abs(x) ((x < 0)?-(x):(x))
+#define max(a,b) max<int>(a,b)
+#define min(a,b) min<int>(a,b)
+#define size(a) (int)(a.size())
 #define ii(x) (int)(x)
+#define ff first
+#define ss second
 
 int const INF = 2e18;
 int const mod = 1e9 +7;
-// int const mod = 998244353;
-// int const N = 1e5 + 7;
+//int const mod = 998244353;
+//int const N = 1e5 + 7;
 
 
 void solve(){
