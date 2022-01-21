@@ -1,11 +1,11 @@
 #ignore the extra folder
 extra/
 temp/
-unsolved/
+#unsolved/
 
 #Python Scripts
-contest.py
-practice.py
+#contest.py
+#practice.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
