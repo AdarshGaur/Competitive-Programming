@@ -1,6 +1,6 @@
 #ignore the extra folder
 extra/
-temp/
+#temp/
 #unsolved/
 
 #Python Scripts
