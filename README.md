@@ -1,1 +1,1 @@
-# contest-codes
+# Competitive Programming
