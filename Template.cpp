@@ -27,11 +27,11 @@ void solve(){
 
 int32_t main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);cout.precision(20);
-    int test=1;
-    cin >> test;
-    while(test--)
-        solve();
-    return 0;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);cout.precision(20);
+	int test=1;
+	cin >> test;
+	while(test--)
+		solve();
+	return 0;
 }
