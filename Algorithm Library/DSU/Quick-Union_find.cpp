@@ -2,32 +2,41 @@
 // Time complexity - O(1) - amortized
 //				   - O(logn) - worst
 
-const int k = 1e5 +7;
-template<int k> struct DSU{
-	int parent[k], sizee[k];
+struct DSU{
+	vector<int> par, weight;
+	int components, nodes;
 
-	DSU(){
-		for(int i=0; i<k; i++){
-			parent[i]=i;
-			sizee[i]=1;
-		}
+	DSU(int n){
+		nodes = n;
+		components = n;
+		par.resize(n+1);
+		weight.resize(n+1, 1);
+		iota(par.begin(), par.end(), 0);
 	}
 
-	int find_set(int v){ // with path compression
-		if(v==parent[v])
+	int Find(int v){ // find set with path compression
+		if(v==par[v])
 			return v;
-		return parent[v] = find_set(parent[v]);
+		return par[v] = Find(par[v]);
 	}
 
-	void union_set(int a, int b){
-		a = find_set(a);
-		b = find_set(b);
-		if(a != b){
-			if(sizee[a] < sizee[b]){
-				swap(a,b);
-			}
-			parent[b] = a;
-			sizee[a] += sizee[b];
+	bool Union(int a, int b){
+		a = Find(a), b = Find(b);
+		if(a == b) return false;
+		if(weight[a] > weight[b]){
+			swap(a,b);
 		}
+		par[a] = b;
+		weight[b] += weight[a];
+		components -= 1;
+		return true;
+	}
+
+	int CntofComponent(){ // return the total number of components
+		return components;
+	}
+
+	int NodeinComponent(int x){ // return the number of nodes in component x;
+		return weight[Find(x)];
 	}
 };
