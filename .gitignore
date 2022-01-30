@@ -1,6 +1,7 @@
 #ignore the extra folder
 extra/
 temp/
+Topcoder\ Applet/
 unsolved/
 
 #Python Scripts
