@@ -31,7 +31,9 @@ int32_t main()
 	cin.tie(NULL);cout.precision(20);
 	int test=1;
 	cin >> test;
-	while(test--)
+	for(int t=1; t<=test; t++){
+		//cout<<"Case #"<<t<<": ";
 		solve();
+	}
 	return 0;
 }
