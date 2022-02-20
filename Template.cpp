@@ -10,15 +10,11 @@ typedef vector<int> vi;
 
 #define endl "\n"
 #define aster(x) cerr<<#x<<" = "<<x<<endl;
-#define abs(x) ((x < 0)?-(x):(x))
-#define ii(x) (int)(x)
-#define ff first
-#define ss second
 
 int const INF = 2e18;
 int const mod = 1e9 +7;
 // int const mod = 998244353;
-// int const N = 1e5 + 7;
+// int const N = 2e5 + 7;
 
 
 void solve(){
@@ -32,7 +28,7 @@ int32_t main()
 	int test=1;
 	cin >> test;
 	for(int t=1; t<=test; t++){
-		//cout<<"Case #"<<t<<": ";
+		// cout<<"Case #"<<t<<": ";
 		solve();
 	}
 	return 0;
