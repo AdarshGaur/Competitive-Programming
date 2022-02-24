@@ -3,6 +3,7 @@ extra/
 temp/
 Topcoder\ Applet/
 unsolved/
+Upsolve/
 
 #Python Scripts
 contest.py
