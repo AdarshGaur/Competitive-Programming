@@ -1,6 +1,7 @@
 // Author : Adarsh Gaur 
 
-// #define NDEBUG
+// Throughout the hell, I alone am the honored one.
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -16,9 +17,8 @@ int const mod = 1e9 +7;
 // int const mod = 998244353;
 // int const N = 2e5 + 7;
 
-
 void solve(){
-	
+
 }
 
 int32_t main()
