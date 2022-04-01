@@ -1,11 +1,9 @@
 #ignore the extra folder
 extra/
-temp/
-Topcoder\ Applet/
-unsolved/
-Upsolve/
 
-#Python Scripts
+#Custom
+temp/
+Upsolve/
 contest.py
 practice.py
 
