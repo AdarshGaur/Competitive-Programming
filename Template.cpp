@@ -1,4 +1,6 @@
-// Author : Adarsh Gaur 
+// https://github.com/AdarshGaur/Competitive-Programming
+// Author : @AdarshGaur
+
 
 #include <bits/stdc++.h>
 using namespace std;
