@@ -36,7 +36,11 @@ LONG - Solutions for CodeChef long challenges. LTIME - Solutions for CodeChef lu
 
 
 ## [SPOJ](http://www.spoj.com)
-One of the oldest online judge. Solutions of the problems are names as the title with the problem code prefixed.
+SPOJ (Sphere Online Judge) is an online judge system with over 315,000 registered users and over 20,000 problems. Tasks are prepared by its community of problem setters or are taken from previous programming contests. SPOJ allows advanced users to organize contests under their own rules and also includes a forum where programmers can discuss how to solve a particular problem.
+
+Apart from the English language, SPOJ also offers its content in Polish, Portuguese and Vietnamese languages. The solution to problems can be submitted in over 40 programming languages, including esoteric ones, via the Sphere Engine. It is run by the Polish company Sphere Research Labs and is one of the oldest online Judge.
+
+Solutions of the problems are names as the title with the problem code prefixed.
 
 
 
