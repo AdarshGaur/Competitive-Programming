@@ -31,8 +31,6 @@ Code-Chef is an online educational program and competitive programming community
 
 It hosts three featured contests every month (Long Challenge, CookOff, LunchTime & Starters) and gives away prizes and goodies to the winners as encouragement. Apart from these, the platform is also open to the entire programming community, especially academic institutes, and student bodies, to host their own contests.
 
-LONG - Solutions for CodeChef long challenges. LTIME - Solutions for CodeChef lunch time challenges. COOKOFF - Solutions for CodeChef CookOffs. STARTERS - Solutions for the Codechef Starters. Random - Random Problems
-
 
 
 ## [SPOJ](http://www.spoj.com)
