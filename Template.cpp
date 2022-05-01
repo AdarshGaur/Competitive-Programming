@@ -8,7 +8,7 @@ using namespace std;
 typedef pair<int,int> pii;
 typedef vector<int> vi;
 
-
+// Source : https://codeforces.com/blog/entry/76087
 vector<string> vec_splitter(string s) {
 	s += ',';
 	vector<string> res;
