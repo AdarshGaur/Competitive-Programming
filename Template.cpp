@@ -8,6 +8,7 @@ using namespace std;
 typedef pair<int,int> pii;
 typedef vector<int> vi;
 
+
 // Source : https://codeforces.com/blog/entry/76087
 vector<string> vec_splitter(string s) {
 	s += ',';
@@ -33,7 +34,7 @@ void debug_out(vector<string> args, int idx, int LINE_NUM, Head H, Tail... T) {
 #ifdef cicada
 #define debug(...) debug_out(vec_splitter(#__VA_ARGS__), 0, __LINE__, __VA_ARGS__)
 #else
-#define debug(...) "Throughout the hells, I alone am the honored one."
+#define debug(...) "..."
 #endif
 
 int const INF = 2e18;
