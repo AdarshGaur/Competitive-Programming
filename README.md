@@ -20,7 +20,7 @@ Each sub-directory in the Codeforces directory is named after a Codeforces round
 
 
 ## [Atcoder](https://atcoder.jp/)
-Based in Japan, AtCoder offers online programming contests on a weekly basis. The contests are offered in Japanese and English. As of 2020, it is one of the most popular platforms of in the Competitive Programming community.
+Based in Japan, AtCoder offers online programming contests on a weekly basis. The contests are offered in Japanese and English. As of 2022, it is one of the most popular platforms of in the Competitive Programming community.
 
 Each sub-directory in the Atcoder directory is named after the Atcoder Contests. The solutions of problems are names as their titles with the problem code.
 
