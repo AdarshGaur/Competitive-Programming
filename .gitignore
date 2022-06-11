@@ -6,6 +6,7 @@ temp/
 Upsolve/
 contest.py
 practice.py
+Extras.cpp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
