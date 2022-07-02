@@ -4,7 +4,7 @@
 using namespace std;
 
 #ifdef cicada
-#include "../../Debug.h"
+#include "debug.h"
 #else
 #define debug(...) "Yume o akiramete shinde kure."
 #endif
