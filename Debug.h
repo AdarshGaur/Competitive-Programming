@@ -1,4 +1,5 @@
 // Author : @AdarshGaur
+
 // Header file with the debugging functions
 
 #define debug(...) debug_out(vec_splitter(#__VA_ARGS__), 0, __LINE__, __VA_ARGS__)
