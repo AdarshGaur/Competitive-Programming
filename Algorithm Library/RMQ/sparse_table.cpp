@@ -1,74 +1,64 @@
-// Author : Adarsh Gaur 
+/*
+* Author : Adarsh Gaur 
+*
+* Sparse Table
+* Time Complexity 				- O(NlogN) for precomputation
+* For Idempotent Functions 		- O(1) for query
+* For non-idempotent function 	- O(logN) for query
+* Space Complexity				- O(NlogN)
+*
+*/
+
+
 #include <bits/stdc++.h>
 using namespace std;
 #define int int64_t
 
-// RMQ with Sparse Table
-// Time Complexity 				- O(NlogN) for precomputation
-// For Idempotent Functions 	- O(1) for query
-// For non-idempotent function 	- O(logN) for query
-// Space Complexity				- O(NlogN)
 
-int const MAXN = 2e5 +7;
-int const K = int(log2(MAXN)) +1;
+template<class T, class F = function<T(const T &, const T &)>>
+struct SparseTable{
+	vector<vector<T>> t;
+	F func;
 
-int n;
-int Log[MAXN+1];
-int A[MAXN];
-int ST[K][MAXN];
-// ST[i][j] - index of minimum value from jth index till length 2^i
-
-
-void ComputeLogs(){
-	// store the log values
-	Log[1]=0;
-	for(int i=2; i<=MAXN; i++){
-		Log[i] = Log[i/2]+1;
-	}
-}
-
-
-void pre(){
-	// Initialize the Sparse Table
-	for(int i=0; i<n; i++){
-		ST[0][i] = i;
-	}
-
-	// compute the other layers Sparse Table
-	for(int j=1; j<K; j++){
-		for(int i=0; i + (1<<j)-1 <n; i++){
-			if( A[ ST[j-1][i] ] <  A[ ST[j-1][i + (1<<(j-1))] ]){
-				ST[j][i] = ST[j-1][i];
-			}else{
-				ST[j][i] = ST[j-1][i+(1<<(j-1))];
+	SparseTable(const vector<T> &a, F f) : t(32 - __builtin_clz(a.size())), func(move(f)) {
+		t[0] = a;
+		for(size_t i = 1; i < t.size(); i++){
+			t[i].resize(a.size() - (1<<i) +1);
+			for(size_t j = 0; j < t[i].size(); j++){
+				int shift = 1;
+				shift <<= i-1;
+				t[i][j] = func(t[i-1][j], t[i-1][j + shift]);
 			}
 		}
 	}
-}
 
-int query(int left ,int right){
-	if(right < left)
-		swap(left,right);
-	int j = Log[right-left+1];
-	return min(A[ ST[j][left] ], A[ ST[j][right-(1<<j) +1] ]);
-}
-
-
-signed main()
-{
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);cout.precision(20);
-	ComputeLogs();
-	cin>>n;
-	for(int i=0; i<n; i++){
-		cin>>A[i];
+	T get(int from, int to){
+		if(to < from)
+			swap(from, to);
+		assert(0 <= from and to <= (int)t[0].size()-1);
+		int k = 31 - __builtin_clz(to - from +1);
+		return func(t[k][from], t[k][to - (1 << k) +1]);
 	}
-	pre();
+};
+
+signed main(){
+
+	int n;
+	cin>>n;
+	vector<int> A(n);
+	for(int &i: A)
+		cin >> i;
+
+	SparseTable<int> st(A, [](int i, int j){
+		return min(i, j);
+	});
+
 	int q;cin>>q;
 	while(q--){
 		int l ,r;
 		cin>>l>>r;
-		cout<<query(l,r)<<endl;
+		// 0 - based indexing
+		cout<<st.get(l,r)<<endl;
 	}
 	return 0;
 }
