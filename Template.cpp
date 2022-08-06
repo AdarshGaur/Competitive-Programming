@@ -6,7 +6,7 @@ using namespace std;
 #ifdef cicada
 #include "debug.h"
 #else
-#define debug(...) "Patience is better than Perfection."
+#define debug(...) "Yume o akiramete shinde kure."
 #endif
 
 #define int int64_t
@@ -15,8 +15,6 @@ typedef pair<int,int> pii;
 
 int const INF = 2e18;
 int const mod = 1e9 +7;
-// int const mod = 998244353;
-// int const N = 2e5 + 7;
 
 
 void solve(){
@@ -27,6 +25,10 @@ signed main()
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);cout.precision(20);
+
+	// freopen("input.txt","r",stdin);
+	// freopen("output.txt","w",stdout);
+
 	int test=1;
 	cin >> test;
 	for(int t=1; t<=test; t++){
