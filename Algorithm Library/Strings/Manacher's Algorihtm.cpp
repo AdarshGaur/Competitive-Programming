@@ -19,7 +19,7 @@ vector<int> oddPalindromes(const string& s){
 	
 	int l = 0, r = -1;
 	for(int i=0; i<n; i++){
-		int k = (i > r ? 0 : min(d1[l + (r-i)], r-i)) +1;
+		int k = (i > r ? 1 : min(d1[l + (r-i)], r-i));
 		while( i+k < n and i-k >= 0 and s[i+k] == s[i-k])
 			k++;
 		d1[i] = k--;
@@ -33,7 +33,7 @@ vector<int> oddPalindromes(const string& s){
 
 
 // d2[i] - how many palindromes of even length with center at i
-// max odd length of palindrome centered at i -> d[i] * 2;
+// max even length of palindrome centered at i -> d[i] * 2;
 vector<int> evenPalindromes(const string& s){
 	int n = (int)s.size();
 	vector<int> d2(n);
