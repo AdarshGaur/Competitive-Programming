@@ -14,32 +14,25 @@ public:
 
     // Encodes a tree to a single string.
     string serialize(TreeNode* root) {
-        if(!root) return "N,";
-        string s = to_string(root->val);
-        s += "," + serialize(root->left) + serialize(root->right);
-        return s;
+        if(!root) return "! ";
+        return to_string(root->val) + " " + serialize(root->left) + serialize(root->right);
     }
 
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data) {
-        queue<string> q;
-        while(!data.empty()){
-            int x = data.find(',');
-            auto v = data.substr(0, x);
-            q.push(v);
-            data = data.substr(x+1);
-        }
-        return converter(q);
+        istringstream in(data);
+        return deserializer(in);
     }
     
-    TreeNode* converter(queue<string>& q){
-        auto v = q.front();
-        q.pop();
-        if(v == "N") return NULL;
-        TreeNode* root = new TreeNode(stoi(v));
-        root->left = converter(q);
-        root->right = converter(q);
-        return root;
+    TreeNode* deserializer(istringstream& in){
+        string val;
+        in >> val;
+        if(val == "!")
+            return NULL;
+        TreeNode* node = new TreeNode(stoi(val));
+        node->left = deserializer(in);
+        node->right = deserializer(in);
+        return node;
     }
 };
 
