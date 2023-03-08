@@ -7,6 +7,7 @@ Upsolve/
 contest.py
 practice.py
 Extras.cpp
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
