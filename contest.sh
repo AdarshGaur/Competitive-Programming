@@ -27,9 +27,9 @@
 set -euo pipefail
 
 # ── Config ────────────────────────────────────────────────────
-BASE_DIR="${CP_HOME:-$HOME/cp}"
+BASE_DIR="${CP_HOME:-$HOME/Dev/Competitive-Programming/live}"
 DEFAULT_PROBLEMS=6
-TEMPLATE_SRC="$(dirname "$0")/Main.java"
+TEMPLATE_SRC="$(dirname "$0")/Template.java"
 
 # ── Colors ────────────────────────────────────────────────────
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'
@@ -50,10 +50,10 @@ err()     { echo -e "${RED}${BOLD}✗${RESET} $*" >&2; exit 1; }
 #  PLATFORM_STYLE  "alpha" = A B C ...   "num" = P1 P2 P3 ...
 #
 declare -A PLATFORM_DIR=(
-    [cf]="codeforces"     [cf-edu]="codeforces"    [cf-custom]="codeforces"
-    [ac-abc]="atcoder"    [ac-arc]="atcoder"
-    [lc-weekly]="leetcode" [lc-biweekly]="leetcode"
-    [cses]="cses"
+    [cf]="Codeforces"     [cf-edu]="Codeforces"    [cf-custom]="Codeforces"
+    [ac-abc]="Atcoder"    [ac-arc]="Atcoder"
+    [lc-weekly]="LeetCode" [lc-biweekly]="LeetCode"
+    [cses]="CSES"
     [custom]="custom"
 )
 declare -A PLATFORM_LABEL=(
@@ -150,30 +150,27 @@ public class Main {
 JAVA
 }
 
-# ── VS Code tasks.json ────────────────────────────────────────
+# ── Zed .zed/tasks.json ───────────────────────────────────────
 generate_tasks_json() {
     cat <<'JSON'
-{
-  "version": "2.0.0",
-  "tasks": [
+[
     {
-      "label": "Run (debug)",
-      "type": "shell",
-      "command": "javac Main.java && java -Dcicada Main < input.txt",
-      "group": { "kind": "build", "isDefault": true },
-      "presentation": { "reveal": "always", "panel": "shared" },
-      "problemMatcher": "$javac"
+        "label": "CP: Run (debug)",
+        "command": "dir=$(dirname \"$ZED_FILE\") && cd \"$dir\" && javac \"$ZED_FILE\" && java -Dcicada -cp \"$dir\" -Dcicada Main < \"$dir/input.txt\"",
+        "cwd": "$ZED_FILE",
+        "reveal": "always",
+        "use_new_terminal": false,
+        "allow_concurrent_runs": false,
     },
     {
-      "label": "Run (judge mode)",
-      "type": "shell",
-      "command": "javac Main.java && java Main < input.txt",
-      "group": "build",
-      "presentation": { "reveal": "always", "panel": "shared" },
-      "problemMatcher": "$javac"
-    }
-  ]
-}
+        "label": "CP: Run (judge mode)",
+        "command": "dir=$(dirname \"$ZED_FILE\") && cd \"$dir\" && javac \"$ZED_FILE\" && java -Dcicada -cp \"$dir\" Main < \"$dir/input.txt\"",
+        "cwd": "$ZED_FILE",
+        "reveal": "always",
+        "use_new_terminal": false,
+        "allow_concurrent_runs": false,
+    },
+]
 JSON
 }
 
@@ -291,8 +288,8 @@ fi
 
 # ── Scaffold ──────────────────────────────────────────────────
 mkdir -p "$contest_dir"
-mkdir -p "$contest_dir/.vscode"
-generate_tasks_json > "$contest_dir/.vscode/tasks.json"
+mkdir -p "$contest_dir/.zed"
+generate_tasks_json > "$contest_dir/.zed/tasks.json"
 
 read -ra labels <<< "$(problem_labels "${PLATFORM_STYLE[$PLATFORM]}" "$NUM_PROBLEMS")"
 
@@ -316,7 +313,7 @@ echo ""
 for label in "${labels[@]}"; do
     echo -e "  ${GREEN}${label}/${RESET}  Main.java  input.txt  output.txt"
 done
-echo -e "  ${CYAN}.vscode/tasks.json${RESET}"
+echo -e "  ${CYAN}.zed/tasks.json${RESET}"
 echo ""
 success "Scaffolded. Moving you there now..."
 echo ""
@@ -334,10 +331,23 @@ echo "CONTEST_DIR=$contest_dir"
 #
 # contest() {
 #     local output
-#     output="$(~/cp/contest.sh "$@")"          # run script, capture output
+#     output="$(~/Dev/Competitive-Programming/contest.sh "$@")"          # run script, capture output
 #     echo "$output" | grep -v '^CONTEST_DIR='  # print everything except sentinel
 #     local dir
 #     dir="$(echo "$output" | grep '^CONTEST_DIR=' | cut -d= -f2-)"
 #     [[ -n "$dir" && -d "$dir" ]] && cd "$dir" && echo "  $(pwd)"
 # }
+#
+# ── Zed keybinding ────────────────────────────────────────────────────────────
+# Add to ~/.config/zed/keymap.json to bind tasks to keys:
+#
+# [
+#   {
+#     "context": "Workspace",
+#     "bindings": {
+#       "ctrl-shift-r": ["task::Spawn", { "task_name": "CP: Run (debug)" }],
+#       "ctrl-shift-j": ["task::Spawn", { "task_name": "CP: Run (judge mode)" }]
+#     }
+#   }
+# ]
 # ═════════════════════════════════════════════════════════════════════════════
