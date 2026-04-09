@@ -17,7 +17,6 @@ public class Main {
     );
     static StringTokenizer st;
 
-    // nextToken() is your cin >> equivalent
     static String nextToken() throws IOException {
         while (st == null || !st.hasMoreTokens()) st = new StringTokenizer(
             br.readLine()
