@@ -13,9 +13,8 @@ class Solution {
                 sb.append(s.charAt(i - j-1));
                 if(reverseWords.contains(sb.toString()) && dp[i-1 -j]){
                     dp[i] = true;
-                }
-                if(dp[i] == true)
                     break;
+                }
             }
         }
         return dp[n];
